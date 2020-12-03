@@ -14,19 +14,38 @@
                              (first))
      :password/value value}))
 
-(defn valid? [{:password/keys [amount character value]}]
+(defn valid-1? [{:password/keys [amount character value]}]
   (<= (:amount/min amount)
       (count (filter #{character} value))
       (:amount/max amount)))
+
+(defn valid-2? [{:password/keys [amount character value]}]
+  (let [max (dec (:amount/max amount))
+        min (dec (:amount/min amount))]
+    (and (>= (count value) max)
+         (or (and (= character (nth value min))
+                  (not= character (nth value max)))
+             (and (not= character (nth value min))
+                  (= character (nth value max)))))))
 
 (def data
   (->> (input 2)
        (string/split-lines)
        (mapv string->password)))
 
-(comment
+(defn part1 []
   (->> data
-       (filter valid?)
-       (count))
+       (filter valid-1?)
+       (count)))
+
+(defn part2 []
+  (->> data
+       (filter valid-2?)
+       (count)))
+
+(comment
+  (part1)
+  (part2)
+
   ;;
   )
