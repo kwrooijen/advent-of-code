@@ -16,9 +16,36 @@
         (update :count inc))
     (update acc :x + 3)))
 
+(defn tree-counting-reducer-2 [steps acc line]
+  (if (on-tree? line (:x acc))
+    (-> acc
+        (update :x + steps)
+        (update :count inc))
+    (update acc :x + steps)))
+
+(defn count-steps [coll steps]
+  (->> coll
+       (reduce (partial tree-counting-reducer-2 steps) {:x steps :count 0})
+       :count))
+
+(defn slope [coll s]
+  (->> coll
+       (drop s)
+       (take-nth s)))
+
+(defn part-1 []
+  (count-steps (slope data 1) 3))
+
+(defn part-2 []
+  (* (count-steps (slope data 1) 1)
+     (count-steps (slope data 1) 3)
+     (count-steps (slope data 1) 5)
+     (count-steps (slope data 1) 7)
+     (count-steps (slope data 2) 1)))
+
 (comment
-  (->> (rest data)
-       (reduce tree-counting-reducer {:x 3 :count 0})
-       :count)
+  (part-1)
+  (part-2)
+
   ;;
   )
