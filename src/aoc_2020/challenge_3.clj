@@ -9,14 +9,7 @@
 (defn on-tree? [line x]
   (= \# (nth line (mod x (count line)))))
 
-(defn tree-counting-reducer [acc line]
-  (if (on-tree? line (:x acc))
-    (-> acc
-        (update :x + 3)
-        (update :count inc))
-    (update acc :x + 3)))
-
-(defn tree-counting-reducer-2 [steps acc line]
+(defn tree-counting-reducer [steps acc line]
   (if (on-tree? line (:x acc))
     (-> acc
         (update :x + steps)
@@ -25,7 +18,7 @@
 
 (defn count-steps [coll steps]
   (->> coll
-       (reduce (partial tree-counting-reducer-2 steps) {:x steps :count 0})
+       (reduce (partial tree-counting-reducer steps) {:x steps :count 0})
        :count))
 
 (defn slope [coll s]
