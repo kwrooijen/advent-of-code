@@ -1,27 +1,33 @@
 (ns aoc-2020.challenge-1
-  (:require [clojure.edn :as edn]
-            [clojure.string :as string]
-            [aoc-2020.util :refer [input]]))
+  (:require [aoc-2020.util :refer [input]]
+            [clojure.edn :as edn]
+            [clojure.string :as string]))
 
 (def input-ints
   (->> (input 1)
        (string/split-lines)
-       (mapv edn/read-string)
-       (set)))
+       (mapv edn/read-string)))
 
-(defn reducer [v _acc n]
-  (when (= 2020 (+ v n))
-    (reduced (* v n))))
+(defn answer [& n]
+  (when (= 2020 (apply + n))
+    (apply * n)))
 
+(defn part1 []
+  (some identity
+        (for [i1 input-ints
+              i2 input-ints]
+          (answer i1 i2))))
 
-(defn matching-input [v]
-  (reduce (partial reducer v)
-          (disj input-ints v)))
+(defn part2 []
+  (some identity
+        (for [i1 input-ints
+              i2 input-ints
+              i3 input-ints]
+          (answer i1 i2 i3))))
+
 
 (comment
-  (->> input-ints
-       (map matching-input)
-       (some identity))
-
+  (part1)
+  (part2)
   ;;
   )
