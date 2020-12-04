@@ -5,16 +5,16 @@
             [clojure.string :as string]))
 
 (defn byr? [{:strs [byr]}]
-  (and (some? byr)
-       (<= 1920 (edn/read-string byr) 2002)))
+  (when byr
+    (<= 1920 (edn/read-string byr) 2002)))
 
 (defn iyr? [{:strs [iyr]}]
-  (and (some? iyr)
-       (<= 2010 (edn/read-string iyr) 2020)))
+  (when iyr
+    (<= 2010 (edn/read-string iyr) 2020)))
 
 (defn eyr? [{:strs [eyr]}]
-  (and (some? eyr)
-       (<= 2020 (edn/read-string eyr) 2030)))
+  (when eyr
+    (<= 2020 (edn/read-string eyr) 2030)))
 
 (defn hgt? [{:strs [hgt]}]
   (when hgt
