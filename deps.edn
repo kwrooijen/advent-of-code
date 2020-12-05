@@ -1,0 +1,2 @@
+{:deps {:kwrooijen/stdlib {:mvn/version "0.0.1-SNAPSHOT"}}
+ :paths ["local" "resources"]}
