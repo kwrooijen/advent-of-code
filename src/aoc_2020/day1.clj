@@ -1,10 +1,11 @@
-(ns aoc-2020.challenge-1
-  (:require [aoc-2020.util :refer [input]]
-            [clojure.edn :as edn]
-            [clojure.string :as string]))
+(ns aoc-2020.day1
+  (:require
+   [aoc.util :refer [get-input]]
+   [clojure.edn :as edn]
+   [clojure.string :as string]))
 
 (def input-ints
-  (->> (input 1)
+  (->> (get-input 2020 1)
        (string/split-lines)
        (mapv edn/read-string)))
 
@@ -28,6 +29,7 @@
 
 (comment
   (part1)
-  (part2)
+  (time
+   (part2))
   ;;
   )

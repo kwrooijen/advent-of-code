@@ -1,2 +1,3 @@
-{:deps {:kwrooijen/stdlib {:mvn/version "0.0.1-SNAPSHOT"}}
+{:deps {:kwrooijen/stdlib {:mvn/version "0.0.1-SNAPSHOT"}
+        clj-http {:mvn/version "3.10.3"}}
  :paths ["local" "resources"]}

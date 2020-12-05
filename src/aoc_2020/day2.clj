@@ -1,7 +1,8 @@
 (ns aoc-2020.challenge-2
-  (:require [aoc-2020.util :refer [input]]
-            [clojure.string :as string]
-            [clojure.edn :as edn]))
+  (:require
+   [aoc.util :refer [get-input]]
+   [clojure.string :as string]
+   [clojure.edn :as edn]))
 
 (defn- string->password [s]
   (let [[amount character value] (string/split s #" ")
@@ -29,7 +30,7 @@
                   (= character (nth value max)))))))
 
 (def data
-  (->> (input 2)
+  (->> (get-input 2020 2)
        (string/split-lines)
        (mapv string->password)))
 

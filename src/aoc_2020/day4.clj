@@ -1,8 +1,9 @@
 (ns aoc-2020.challenge-4
-  (:require [aoc-2020.util :refer [input]]
-            [clojure.edn :as edn]
-            [clojure.set :refer [union]]
-            [clojure.string :as string]))
+  (:require
+   [aoc.util :refer [get-input]]
+   [clojure.edn :as edn]
+   [clojure.set :refer [union]]
+   [clojure.string :as string]))
 
 (defn byr? [{:strs [byr]}]
   (when byr
@@ -73,7 +74,7 @@
                                   optional-validators))))
 
 (def data
-  (->> (string/split (input 4) #"\n\n")
+  (->> (string/split (get-input 2020 4) #"\n\n")
        (map #(string/replace % #"\n" " "))
        (mapv (fn [l] (apply hash-map (string/split l #"(\:|\s)"))))))
 

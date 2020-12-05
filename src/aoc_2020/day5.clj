@@ -1,9 +1,9 @@
-(ns src.aoc-2020.challenge-5
+(ns aoc-2020.challenge-5
   (:require
-   [aoc-2020.util :refer [input]]
+   [aoc.util :refer [get-input]]
    [clojure.string :as string]))
 
-(def data (input 5))
+(def data (get-input 2020 5))
 
 (defn take-upper-lower-half [char [lower upper] r]
   (let [half (Math/ceil (/ (- upper lower) 2))]

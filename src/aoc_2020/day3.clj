@@ -1,9 +1,10 @@
 (ns aoc-2020.challenge-3
-  (:require [aoc-2020.util :refer [input]]
-            [clojure.string :as string]))
+  (:require
+   [aoc.util :refer [get-input]]
+   [clojure.string :as string]))
 
 (def data
-  (-> (input 3)
+  (-> (get-input 2020 3)
       (string/split-lines)))
 
 (defn on-tree? [line x]
