@@ -14,10 +14,10 @@
        (mapv string->instruction)))
 
 (def directions
-  (flatten (repeat [:N :E :S :W])))
+  (cycle [:N :E :S :W]))
 
 (def directions-reverse
-  (flatten (repeat [:N :W :S :E])))
+  (cycle [:N :W :S :E]))
 
 (defn new-direction [facing directions degrees]
   (->> directions
